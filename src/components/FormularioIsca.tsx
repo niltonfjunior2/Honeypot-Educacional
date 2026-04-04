@@ -13,17 +13,6 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const CURSOS_UEMG = [
-  { id: "1", nome: "Administração" },
-  { id: "2", nome: "Design de Produto" },
-  { id: "3", nome: "Direito" },
-  { id: "4", nome: "Engenharia de Computação" },
-  { id: "5", nome: "Medicina" },
-  { id: "6", nome: "Pedagogia" },
-  { id: "7", nome: "Psicologia" },
-  { id: "8", nome: "Sistemas de Informação" },
-];
-
 export default function FormularioIsca() {
   const [cursos, setCursos] = useState<{ id: string; nome: string }[]>([]);
   const [activeCampanhaId, setActiveCampanhaId] = useState("1");

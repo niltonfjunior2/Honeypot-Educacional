@@ -5,11 +5,35 @@ import { useRouter } from "next/navigation";
 
 type Tab = "insights" | "campanhas" | "cursos";
 
+interface Metric {
+  id: number;
+  nome: string;
+  cliques: number;
+}
+
+interface DashboardData {
+  campanha: string;
+  totalGeral: number;
+  metricas: Metric[];
+}
+
+interface Campanha {
+  id: number;
+  nome_campanha: string;
+  descricao?: string;
+  ativa: boolean;
+}
+
+interface Curso {
+  id: string;
+  nome: string;
+}
+
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>("insights");
-  const [data, setData] = useState<any>(null);
-  const [campanhas, setCampanhas] = useState<any[]>([]);
-  const [cursos, setCursos] = useState<any[]>([]);
+  const [data, setData] = useState<DashboardData | null>(null);
+  const [campanhas, setCampanhas] = useState<Campanha[]>([]);
+  const [cursos, setCursos] = useState<Curso[]>([]);
   const [loading, setLoading] = useState(true);
   
   // States para novos itens
@@ -103,11 +127,14 @@ export default function DashboardPage() {
 
   const handleToggleCampanha = async (id: number, currentAtiva: boolean) => {
     if (currentAtiva) return; // Não pode desativar a única ativa sem ativar outra
+    const target = campanhas.find(c => c.id === id);
+    if (!target) return;
+    
     await fetch(`/api/admin/campanhas/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
-        nome_campanha: campanhas.find(c => c.id === id).nome_campanha,
+        nome_campanha: target.nome_campanha,
         ativa: true 
       }),
     });
@@ -179,7 +206,7 @@ export default function DashboardPage() {
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {data?.metricas.map((m: any, idx: number) => (
+              {data?.metricas.map((m, idx) => (
                 <div key={m.id} className="bg-white p-8 rounded-[40px] border border-white shadow-xl shadow-slate-100 flex flex-col gap-6 group hover:shadow-2xl transition-all">
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-1">
