@@ -26,6 +26,7 @@ const CURSOS_UEMG = [
 
 export default function FormularioIsca() {
   const [cursos, setCursos] = useState<{ id: string; nome: string }[]>([]);
+  const [activeCampanhaId, setActiveCampanhaId] = useState("1");
   const [loadingCursos, setLoadingCursos] = useState(true);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -37,6 +38,7 @@ export default function FormularioIsca() {
         const json = await response.json();
         if (json.success) {
           setCursos(json.data);
+          if (json.active_campanha_id) setActiveCampanhaId(json.active_campanha_id);
         }
       } catch (err) {
         console.error("Erro ao carregar cursos:", err);
@@ -58,9 +60,10 @@ export default function FormularioIsca() {
   const onSubmit = async (data: FormValues) => {
     setLoading(true);
     // LÓGICA DE DESCARTE (DNA Seção 2): 
-    // O campo 'nome' é descartado aqui. Enviamos apenas o curso_id.
+    // O campo 'nome' é descartado aqui. Enviamos apenas o curso_id e campanha_id ativa.
     const payload = {
       curso_id: data.curso_id,
+      campanha_id: activeCampanhaId,
       timestamp: new Date().toISOString(),
     };
 

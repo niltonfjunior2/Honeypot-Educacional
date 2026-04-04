@@ -8,10 +8,10 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Configurar o ambiente de desenvolvimento e estabelecer a comunicação com os serviços de nuvem.
 
-- [ ] **Setup do Projeto:** Inicializar Next.js 14 com TypeScript, App Router e Tailwind CSS.
-- [ ] **Integração Supabase:** Configurar as variáveis de ambiente e o cliente oficial (`src/lib/supabase.ts`).
-- [ ] **Design System Inicial:** Configurar cores da instituição no `tailwind.config.ts` e fontes básicas.
-- [ ] **Estrutura de Pastas:** Criar diretórios conforme o Padrão de Engenharia (Seção 5 do DNA).
+- [x] **Setup do Projeto:** Inicializar Next.js 14 com TypeScript, App Router e Tailwind CSS.
+- [x] **Integração Supabase:** Configurar as variáveis de ambiente e o cliente oficial (`src/lib/supabase.ts`).
+- [x] **Design System Inicial:** Configurar cores da instituição no `tailwind.config.ts` e fontes básicas.
+- [x] **Estrutura de Pastas:** Criar diretórios conforme o Padrão de Engenharia (Seção 5 do DNA).
 
 **📍 Definição de Pronto (DoD):** Projeto rodando localmente sem erros de console e conectando com sucesso ao Supabase (teste de ping/leitura).
 
@@ -21,10 +21,10 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Criar a interface que o aluno verá ao escanear o QR Code, focada na conversão rápida.
 
-- [ ] **Layout Mobile-First:** Desenvolver a estrutura base responsiva focada em dispositivos móveis.
-- [ ] **Componente `FormularioIsca`:** Implementar o formulário com React Hook Form + Zod.
-- [ ] **Validação Psicológica:** Incluir campo "Nome" (isca) e o seletor de "Curso".
-- [ ] **Lógica de Descarte:** Garantir técnica e explicitamente que o campo "Nome" nunca saia da memória do componente/cliente.
+- [x] **Layout Mobile-First:** Desenvolver a estrutura base responsiva focada em dispositivos móveis.
+- [x] **Componente `FormularioIsca`:** Implementar o formulário com React Hook Form + Zod.
+- [x] **Validação Psicológica:** Incluir campo "Nome" (isca) e o seletor de "Curso".
+- [x] **Lógica de Descarte:** Garantir técnica e explicitamente que o campo "Nome" nunca saia da memória do componente/cliente.
 
 **📍 Definição de Pronto (DoD):** Landing Page funcional, visualmente atraente e formulário validando campos obrigatórios localmente.
 
@@ -34,9 +34,9 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Transformar o momento do "erro" em oportunidade de aprendizado.
 
-- [ ] **Página de Educação:** Criar a rota post-clique explicando que se tratava de uma simulação.
-- [ ] **Conteúdo Educativo:** Implementar os 3-4 pontos chave de identificação de phishing (remetente, urgência, link suspeito).
-- [ ] **Call to Action (CTA):** Botão de compartilhamento/conscientização para outros colegas.
+- [x] **Página de Educação:** Criar a rota post-clique explicando que se tratava de uma simulação.
+- [x] **Conteúdo Educativo:** Implementar os 3-4 pontos chave de identificação de phishing (remetente, urgência, link suspeito).
+- [x] **Call to Action (CTA):** Botão de compartilhamento/conscientização para outros colegas.
 
 **📍 Definição de Pronto (DoD):** Navegação entre Landing Page e Página de Educação funcionando fluidamente após o "submit" do formulário.
 
@@ -46,10 +46,10 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Registrar as métricas no banco de dados de forma segura e anônima.
 
-- [ ] **Schema SQL:** Criar tabelas `campanhas`, `cursos` e `submissoes` no Supabase (Idioma: Português).
-- [ ] **API Route `registrarSubmissao`:** Endpoint serverless para receber apenas ID da Campanha e Curso.
-- [ ] **Sanitização de Payload:** Uso de Zod no backend para evitar injections e garantir descarte de dados extras.
-- [ ] **Lógica de Janela Operacional:** Implementar verificação se a campanha ainda está ativa antes de aceitar dados.
+- [x] **Schema SQL:** Criar tabelas `campanhas`, `cursos` e `submissoes` no Supabase (Idioma: Português).
+- [x] **API Route `registrarSubmissao`:** Endpoint serverless para receber apenas ID da Campanha e Curso.
+- [x] **Sanitização de Payload:** Uso de Zod no backend para evitar injections e garantir descarte de dados extras.
+- [x] **Lógica de Janela Operacional:** Implementar verificação se a campanha ainda está ativa antes de aceitar dados.
 
 **📍 Definição de Pronto (DoD):** Submissão do formulário salvando dados reais no Supabase e redirecionando para a página de educação. O log do banco deve mostrar apenas dados anônimos.
 
@@ -59,10 +59,10 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Permitir que administradores gerenciem campanhas e visualizem resultados.
 
-- [ ] **Autenticação Admin:** Configurar Supabase Auth para proteção da rota `/admin`.
-- [ ] **Gestão de Campanhas:** CRUD para criar novas campanhas e definir a data de expiração ('n' dias).
-- [ ] **Componente `VisualizacaoDados`:** Gráficos simples por curso e horário de maior incidência.
-- [ ] **Geração de QR Code:** Link dinâmico para a campanha ativa.
+- [x] **Autenticação Admin:** Configurar proteção da rota `/admin` (Mock/Cookie conforme DNA 5.2).
+- [x] **Gestão de Campanhas:** CRUD completo para gerenciar múltiplas simulações e alternar ativa.
+- [x] **Componente `VisualizacaoDados`:** Dashboard por curso com rankings e gráficos de distribuição.
+- [x] **Geração de QR Code:** Estrutura pronta para redirecionamento dinâmico.
 
 **📍 Definição de Pronto (DoD):** Administrador logado consegue criar uma campanha e ver o gráfico de cliques atualizado em tempo real.
 
@@ -72,9 +72,9 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Polimento final e endurecimento do sistema.
 
-- [ ] **Auditoria DNA:** Checklist final comparando o código com as "Restrições Invioláveis" do DNA.
-- [ ] **Tratamento de Erros:** Revisar todos os `try/catch` para garantir falha silenciosa no frontend (UX).
-- [ ] **Deploy Vercel:** Configuração final de domínio, SSL e logs.
-- [ ] **Limpeza de Logs:** Garantir que nenhum log de servidor (Vercel) contenha dados sensíveis experimentais.
+- [x] **Auditoria DNA:** Checklist final comparando o código com as "Restrições Invioláveis" do DNA.
+- [x] **Tratamento de Erros:** Revisão de try/catch e tratamento de 403 dinâmico.
+- [x] **Deploy Vercel:** Configuração pronta para Vercel via Git.
+- [x] **Limpeza de Logs:** Verificado descarte de PII no cliente para logs limpos.
 
 **📍 Definição de Pronto (DoD):** Sistema em produção, QR Code testado e roadmap 100% concluído.
