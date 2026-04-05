@@ -42,3 +42,21 @@ Use estas tags para categorizar novas entradas, facilitando a busca semântica:
 
 **Sintoma/Contexto:** Risco de vazamento de nomes reais de alunos para o banco de dados.
 **Solução Aplicada:** Enforced "Strip-at-Source": o componente `FormularioIsca.tsx` captura o nome apenas para a UI, mas o payload do `fetch` reconstrói o objeto contendo estritamente apenas o `curso_id` e o `campanha_id`, ignorando qualquer outro campo do formulário.
+
+### [2026-04-05] - [DB] RLS (Row Level Security) para Role 'anon' em Admin Prototipado
+
+**Sintoma/Contexto:** Falha silenciosa ou 403 ao tentar deletar cursos ou criar campanhas no Dashboard, mesmo logado.
+**Causa Raiz:** O projeto utiliza um sistema de Cookie simples e a chave `anon_key` do Supabase. Por padrão, o RLS bloqueia qualquer ação que não seja `SELECT`.
+**Solução Aplicada:** Criado script `sql/schema.sql` atualizado com políticas de `ALL` (CRUD total) para a role `anon` nas tabelas `campanhas`, `cursos` e `submissoes`. Em produção real, este acesso deve ser restrito a `authenticated`.
+
+### [2026-04-05] - [ENV] Cache "Teimoso" do Next.js 14 e o Truque dos Headers
+
+**Sintoma/Contexto:** Mesmo com `force-dynamic`, as APIs de Métricas e Cursos retornavam dados antigos (stale data), causando desencontro de IDs e métricas zeradas após o reset do banco.
+**Causa Raiz:** O Data Cache do Next.js 14 pode persistir resultados de Route Handlers se eles não consumirem explicitamente funções dinâmicas.
+**Solução Aplicada:** Injetado `headers()` de `next/headers` dentro dos Route Handlers de GET. Isso força o Next.js a ignorar qualquer cache e reexecutar a query no Supabase a cada requisição. Além disso, adicionado `Cache-Control: no-store` nos headers de resposta.
+
+### [2026-04-05] - [BUG] Gatilho de Formulário em Next.js (Submit Missing)
+
+**Sintoma/Contexto:** Botão de "Criar Campanha" não disparava a API, resultando em "nada acontece".
+**Causa Raiz:** O botão dentro do formulário não tinha `type="submit"` explícito e a validação do Zod no handler estava abortando a submissão silenciosamente por campos vazios.
+**Solução Aplicada:** Adicionado `type="submit"` e logs de alerta (`console.warn`) no frontend para detectar falhas de validação visualmente no console (F12).

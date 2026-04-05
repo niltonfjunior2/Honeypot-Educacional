@@ -47,9 +47,9 @@ export default function DashboardPage() {
     setLoading(true);
     try {
       const [resMetrics, resCampanhas, resCursos] = await Promise.all([
-        fetch("/api/admin/metricas"),
-        fetch("/api/admin/campanhas"),
-        fetch("/api/cursos") // Reutilizando a API pública que já traz nome_curso
+        fetch(`/api/admin/metricas?v=${Date.now()}`, { cache: 'no-store' }),
+        fetch(`/api/admin/campanhas?v=${Date.now()}`, { cache: 'no-store' }),
+        fetch(`/api/cursos?v=${Date.now()}`, { cache: 'no-store' })
       ]);
 
       const [metrics, camps, cur] = await Promise.all([
@@ -88,9 +88,12 @@ export default function DashboardPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nome_curso: novoCurso }),
       });
+      const data = await res.json();
       if (res.ok) {
         setNovoCurso("");
         await fetchAll();
+      } else {
+        alert(`Erro ao criar curso: ${data.error}`);
       }
     } finally {
       setIsSubmitting(false);
@@ -99,17 +102,26 @@ export default function DashboardPage() {
 
   const handleDeleteCurso = async (id: number) => {
     if (!confirm("Deseja realmente excluir este curso? Métricas vinculadas serão perdidas.")) return;
-    await fetch(`/api/admin/cursos/${id}`, { method: "DELETE" });
-    await fetchAll();
+    const res = await fetch(`/api/admin/cursos/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      await fetchAll();
+    } else {
+      const data = await res.json();
+      alert(`Erro ao excluir curso: ${data.error}`);
+    }
   };
 
   // --- Handlers para Campanhas ---
   const handleAddCampanha = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!novaCampanha.nome.trim() || isSubmitting) return;
+    console.log("[Dashboard] Evento de criação disparado. Dados:", novaCampanha);
+    if (!novaCampanha.nome.trim() || isSubmitting) {
+      console.warn("[Dashboard] Criação abortada: Nome vazio ou submissão em curso.");
+      return;
+    }
     setIsSubmitting(true);
     try {
-      await fetch("/api/admin/campanhas", {
+      const res = await fetch("/api/admin/campanhas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -118,8 +130,13 @@ export default function DashboardPage() {
           ativa: campanhas.length === 0 // Ativa se for a primeira
         }),
       });
-      setNovaCampanha({ nome: "", descricao: "" });
-      await fetchAll();
+      const data = await res.json();
+      if (res.ok) {
+        setNovaCampanha({ nome: "", descricao: "" });
+        await fetchAll();
+      } else {
+        alert(`Erro ao criar campanha: ${data.error}`);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -130,7 +147,7 @@ export default function DashboardPage() {
     const target = campanhas.find(c => c.id === id);
     if (!target) return;
     
-    await fetch(`/api/admin/campanhas/${id}`, {
+    const res = await fetch(`/api/admin/campanhas/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
@@ -138,13 +155,23 @@ export default function DashboardPage() {
         ativa: true 
       }),
     });
-    await fetchAll();
+    if (res.ok) {
+      await fetchAll();
+    } else {
+      const data = await res.json();
+      alert(`Erro ao ativar campanha: ${data.error}`);
+    }
   };
 
   const handleDeleteCampanha = async (id: number) => {
     if (!confirm("Excluir campanha? Isso removerá permanentemente as submissões desta campanha.")) return;
-    await fetch(`/api/admin/campanhas/${id}`, { method: "DELETE" });
-    await fetchAll();
+    const res = await fetch(`/api/admin/campanhas/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      await fetchAll();
+    } else {
+      const data = await res.json();
+      alert(`Erro ao excluir campanha: ${data.error}`);
+    }
   };
 
   if (loading) return (
@@ -247,7 +274,12 @@ export default function DashboardPage() {
                    value={novaCampanha.descricao}
                    onChange={e => setNovaCampanha({...novaCampanha, descricao: e.target.value})}
                  />
-                 <button className="bg-primary-600 text-white font-black rounded-2xl text-[10px] uppercase tracking-widest hover:bg-primary-700 transition-all">Criar Campanha</button>
+                  <button 
+                    type="submit"
+                    className="bg-primary-600 text-white font-black rounded-2xl text-[10px] uppercase tracking-widest hover:bg-primary-700 transition-all px-4 py-4"
+                  >
+                    Criar Campanha
+                  </button>
                </form>
             </section>
 

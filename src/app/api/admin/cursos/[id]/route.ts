@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import * as z from "zod";
+import { revalidatePath } from "next/cache";
 
 const cursoSchema = z.object({
   nome_curso: z.string().min(3, "O nome do curso deve ter pelo menos 3 caracteres.").max(100),
@@ -45,7 +46,14 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
       .eq("id", params.id);
 
     if (error) throw error;
-    return NextResponse.json({ success: true });
+
+    revalidatePath("/admin/dashboard");
+    revalidatePath("/api/cursos");
+    revalidatePath("/api/admin/metricas");
+
+    return NextResponse.json({ success: true }, {
+      headers: { 'Cache-Control': 'no-store, max-age=0' }
+    });
   } catch (err) {
     console.error("Cursos Delete Error:", err);
     return NextResponse.json({ error: "Falha ao excluir curso." }, { status: 500 });

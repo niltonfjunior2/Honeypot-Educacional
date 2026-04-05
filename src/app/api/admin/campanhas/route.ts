@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import * as z from "zod";
+import { revalidatePath } from "next/cache";
 
 const campanhaSchema = z.object({
   nome_campanha: z.string().min(3, "O nome da campanha deve ter pelo menos 3 caracteres.").max(100),
@@ -18,7 +19,9 @@ export async function GET() {
       .order("data_inicio", { ascending: false });
 
     if (error) throw error;
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data }, {
+      headers: { 'Cache-Control': 'no-store, max-age=0' }
+    });
   } catch (err) {
     console.error("Campanhas List Error:", err);
     return NextResponse.json({ error: "Falha ao listar campanhas." }, { status: 500 });
@@ -48,13 +51,25 @@ export async function POST(req: Request) {
       .select()
       .single();
 
-    if (error) throw error;
-    return NextResponse.json({ success: true, data });
+    if (error) {
+      console.error("[API Campanhas] Erro ao inserir:", error);
+      throw error;
+    }
+    
+    // Forçar limpeza de cache
+    revalidatePath("/admin/dashboard");
+    revalidatePath("/api/admin/campanhas");
+    revalidatePath("/api/admin/metricas");
+
+    console.log("[API Campanhas] Criada com sucesso:", data.id);
+    return NextResponse.json({ success: true, data }, {
+      headers: { 'Cache-Control': 'no-store, max-age=0' }
+    });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return NextResponse.json({ error: err.issues[0].message }, { status: 400 });
     }
-    console.error("Campanhas Create Error:", err);
+    console.error("[API Campanhas] Erro FATAL:", err);
     return NextResponse.json({ error: "Falha ao criar campanha." }, { status: 500 });
   }
 }

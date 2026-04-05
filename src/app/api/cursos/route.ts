@@ -12,17 +12,27 @@ export async function GET() {
 
     if (error) throw error;
 
-    // Buscar ID da campanha ativa para o formulário
-    const { data: campanha } = await supabase
+    // Busca em tempo real (Revalidação via headers)
+    const { data: campanha, error: campError } = await supabase
       .from("campanhas")
-      .select("id")
+      .select("id, nome_campanha, ativa")
       .eq("ativa", true)
-      .single();
+      .maybeSingle(); 
+
+    if (campError) {
+      console.error("Cursos API Error:", campError.message);
+    }
 
     return NextResponse.json({ 
       success: true, 
       data: cursos.map(c => ({ id: c.id.toString(), nome: c.nome_curso })),
       active_campanha_id: campanha?.id?.toString() || "0"
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      }
     });
   } catch (err) {
     console.error("Public API Cursos Error:", err);

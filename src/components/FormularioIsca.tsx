@@ -27,7 +27,10 @@ export default function FormularioIsca() {
         const json = await response.json();
         if (json.success) {
           setCursos(json.data);
-          if (json.active_campanha_id) setActiveCampanhaId(json.active_campanha_id);
+          if (json.active_campanha_id) {
+            console.log("[Honeypot] Campanha Ativa:", json.active_campanha_id);
+            setActiveCampanhaId(json.active_campanha_id);
+          }
         }
       } catch (err) {
         console.error("Erro ao carregar cursos:", err);

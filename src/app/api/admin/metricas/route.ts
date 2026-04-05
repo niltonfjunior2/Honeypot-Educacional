@@ -1,16 +1,22 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  // Forçar o Next.js a ignorar qualquer cache de pré-renderização (Rebuild sob demanda)
+  headers(); 
+  
   try {
     // 1. Buscar a campanha ativa
-    const { data: campanhaAtiva } = await supabase
+    const { data: campanhaAtiva, error: campError } = await supabase
       .from("campanhas")
       .select("id, nome_campanha")
       .eq("ativa", true)
-      .single();
+      .maybeSingle();
+
+    if (campError) throw campError;
 
     if (!campanhaAtiva) {
       return NextResponse.json({
