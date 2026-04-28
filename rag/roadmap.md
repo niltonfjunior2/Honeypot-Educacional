@@ -2,20 +2,16 @@
 
 Este roadmap define as fases incrementais para a construção do projeto, respeitando as restrições e diretrizes estabelecidas no `rag/project_dna.md`.
 
----
-
 ## 🏗️ Fase 0: Alicerce e Infraestrutura (Setup)
 
 **Objetivo:** Configurar o ambiente de desenvolvimento e estabelecer a comunicação com os serviços de nuvem.
 
-- [x] **Setup do Projeto:** Inicializar Next.js 14 com TypeScript, App Router e Tailwind CSS.
-- [x] **Integração Supabase:** Configurar as variáveis de ambiente e o cliente oficial (`src/lib/supabase.ts`).
-- [x] **Design System Inicial:** Configurar cores da instituição no `tailwind.config.ts` e fontes básicas.
-- [x] **Estrutura de Pastas:** Criar diretórios conforme o Padrão de Engenharia (Seção 5 do DNA).
+[x] **Setup do Projeto:** Inicializar Next.js 14 com TypeScript, App Router e Tailwind CSS.
+[x] **Integração Supabase:** Configurar as variáveis de ambiente e o cliente oficial (`src/lib/supabase.ts`).
+[x] **Design System Inicial:** Configurar cores da instituição no `tailwind.config.ts` e fontes básicas.
+[x] **Estrutura de Pastas:** Criar diretórios conforme o Padrão de Engenharia (Seção 5 do DNA).
 
 **📍 Definição de Pronto (DoD):** Projeto rodando localmente sem erros de console e conectando com sucesso ao Supabase (teste de ping/leitura).
-
----
 
 ## 🎣 Fase 1: O Fluxo da Isca (Landing Page)
 
@@ -59,22 +55,20 @@ Este roadmap define as fases incrementais para a construção do projeto, respei
 
 **Objetivo:** Permitir que administradores gerenciem campanhas e visualizem resultados.
 
-- [x] **Autenticação Admin:** Configurar proteção da rota `/admin` (Mock/Cookie conforme DNA 5.2).
-- [x] **Gestão de Campanhas:** CRUD completo para gerenciar múltiplas simulações e alternar ativa.
-- [x] **Componente `VisualizacaoDados`:** Dashboard por curso com rankings e gráficos de distribuição.
-- [x] **Geração de QR Code:** Estrutura pronta para redirecionamento dinâmico.
+[x] **Autenticação Admin:** Configurar proteção da rota `/admin` (Mock/Cookie conforme DNA 5.2).
+[x] **Gestão de Campanhas:** CRUD completo para gerenciar múltiplas simulações e alternar ativa.
+[x] **Componente `VisualizacaoDados`:** Dashboard por curso com rankings e gráficos de distribuição.
+[x] **Geração de QR Code:** Estrutura pronta para redirecionamento dinâmico.
 
 **📍 Definição de Pronto (DoD):** Administrador logado consegue criar uma campanha e ver o gráfico de cliques atualizado em tempo real.
-
----
 
 ## 🛡️ Fase 5: Refinamento, Segurança e Operação
 
 **Objetivo:** Polimento final e endurecimento do sistema.
 
-- [x] **Auditoria DNA:** Checklist final comparando o código com as "Restrições Invioláveis" do DNA.
-- [x] **Tratamento de Erros:** Revisão de try/catch e tratamento de 403 dinâmico.
-- [x] **Deploy Vercel:** Configuração pronta para Vercel via Git.
-- [x] **Limpeza de Logs:** Verificado descarte de PII no cliente para logs limpos.
+[x] **Auditoria DNA:** Checklist final comparando o código com as "Restrições Invioláveis" do DNA.
+[x] **Tratamento de Erros:** Revisão de try/catch e tratamento de 403 dinâmico.
+[x] **Deploy Vercel:** Configuração pronta para Vercel via Git.
+[x] **Limpeza de Logs:** Verificado descarte de PII no cliente para logs limpos.
 
 **📍 Definição de Pronto (DoD):** Sistema em produção, QR Code testado e roadmap 100% concluído.
