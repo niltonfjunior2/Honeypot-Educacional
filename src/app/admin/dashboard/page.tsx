@@ -117,6 +117,9 @@ export default function DashboardPage() {
     console.log("[Dashboard] Evento de criação disparado. Dados:", novaCampanha);
     if (!novaCampanha.nome.trim() || isSubmitting) {
       console.warn("[Dashboard] Criação abortada: Nome vazio ou submissão em curso.");
+      if (!novaCampanha.nome.trim()) {
+        alert("Por favor, preencha o título da campanha antes de criar.");
+      }
       return;
     }
     setIsSubmitting(true);
@@ -267,6 +270,7 @@ export default function DashboardPage() {
                    className="bg-slate-50 px-6 py-4 rounded-2xl outline-none focus:ring-2 focus:ring-primary-500 text-sm font-medium"
                    value={novaCampanha.nome}
                    onChange={e => setNovaCampanha({...novaCampanha, nome: e.target.value})}
+                   required
                  />
                  <input 
                    placeholder="Descrição curta" 

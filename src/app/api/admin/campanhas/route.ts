@@ -57,9 +57,13 @@ export async function POST(req: Request) {
     }
     
     // Forçar limpeza de cache
-    revalidatePath("/admin/dashboard");
-    revalidatePath("/api/admin/campanhas");
-    revalidatePath("/api/admin/metricas");
+    try {
+      revalidatePath("/admin/dashboard");
+      revalidatePath("/api/admin/campanhas");
+      revalidatePath("/api/admin/metricas");
+    } catch (e) {
+      console.warn("[API Campanhas] revalidatePath warn:", e);
+    }
 
     console.log("[API Campanhas] Criada com sucesso:", data.id);
     return NextResponse.json({ success: true, data }, {

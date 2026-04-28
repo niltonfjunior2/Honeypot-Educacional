@@ -25,7 +25,15 @@ const config: Config = {
         "on-surface-variant": "#4c4732",
         "on-tertiary-container": "#445ead",
         "on-background": "#1c1b1b",
-        "primary": "#6d5e00",
+        "primary": {
+          DEFAULT: "#6d5e00",
+          50: "#fefce8",
+          100: "#fef9c3",
+          400: "#facc15",
+          500: "#eab308",
+          600: "#ca8a04",
+          700: "#a16207"
+        },
         "on-surface": "#1c1b1b",
         "secondary-fixed-dim": "#65df76",
         "surface-container-low": "#f6f3f2",
