@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe1ff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002107",
+                        "primary-fixed": "#ffe243",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed": "#81fc90",
+                        "on-primary-fixed": "#211b00",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed-dim": "#e3c600",
+                        "secondary-container": "#7ff98d",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4c4732",
+                        "on-tertiary-container": "#445ead",
+                        "on-background": "#1c1b1b",
+                        "primary": "#6d5e00",
+                        "on-surface": "#1c1b1b",
+                        "secondary-fixed-dim": "#65df76",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0edec",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#6d5e00",
+                        "primary-container": "#ffdf00",
+                        "on-secondary-container": "#007329",
+                        "surface": "#fcf9f8",
+                        "tertiary": "#405aa9",
+                        "on-primary-fixed-variant": "#524700",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-container-high": "#ebe7e7",
+                        "background": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#006e27",
+                        "on-primary-container": "#716200",
+                        "outline-variant": "#cec6ab",
+                        "on-tertiary-fixed": "#00174d",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#d7deff",
+                        "inverse-primary": "#e3c600",
+                        "inverse-surface": "#313030",
+                        "tertiary-fixed-dim": "#b5c4ff",
+                        "on-tertiary-fixed-variant": "#25428f",
+                        "outline": "#7d775f",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "gutter": "20px",
+                        "md": "24px",
+                        "base": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Lexend"],
+                        "cta-label": ["Lexend"],
+                        "body-lg": ["Lexend"],
+                        "label-bold": ["Space Grotesk"],
+                        "display-xl": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "body-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "cta-label": ["20px", {"lineHeight": "1.0", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display-xl": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .diagonal-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .mesh-texture {
+            background-image: radial-gradient(#006e27 0.5px, transparent 0.5px);
+            background-size: 8px 8px;
+            opacity: 0.1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-primary-container min-h-screen font-body-md text-on-background selection:bg-secondary selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-yellow-400 dark:bg-yellow-500 border-b-4 border-green-700 shadow-[0px_4px_0px_0px_rgba(0,103,56,1)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center overflow-hidden border-2 border-white">
+<img alt="UEMG Logo" class="w-full h-full object-contain" data-alt="Official logo of Universidade do Estado de Minas Gerais with professional clean typography and institutional colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMVGplIi_puPKrigzDSfNoN_32vFeQpaDkBobKJAeAowzvoMb10vNRRHVUgovQ_fuNE7_QDNL5vUuuJ3Xf1Et2FiagCd7_de500PqA2aUndDlibowRlWiJEXOPYFXf94GjkinhUW6_mwlFQ5V83HZan1460rdngTSsyrRtSDJc3wgCu2SYULkQETMXJ6Cn1-u4wlaQGqUfjslBmD8ekPImod7NMYGMBKUSJrmSl6E5BfD8gFgOkXg3JKjq7aTLq9OmA8eYbzUox_E"/>
+</div>
+<h1 class="font-['Lexend'] font-black italic uppercase tracking-tighter text-xl text-blue-900 dark:text-blue-950">UEMG GIVEAWAY</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-900 dark:text-blue-950 text-2xl" data-icon="military_tech">military_tech</span>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-secondary diagonal-bg py-lg md:py-xl px-4">
+<div class="absolute inset-0 mesh-texture"></div>
+<div class="max-w-container-max mx-auto grid md:grid-cols-2 items-center gap-lg relative z-10">
+<div class="text-center md:text-left order-2 md:order-1">
+<div class="inline-block bg-primary-fixed text-on-primary-fixed px-sm py-xs mb-sm font-label-bold text-label-bold uppercase transform -skew-x-12">
+                        SORTEIO OFICIAL
+                    </div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-md uppercase leading-none italic">
+                        GANHE A CAMISA <span class="text-primary-fixed">DO HEXA!</span>
+</h2>
+<p class="font-body-lg text-body-lg text-secondary-container mb-lg max-w-md">
+                        Exclusivo para estudantes da UEMG. Participe agora e vista as cores da nossa seleção!
+                    </p>
+<div class="flex items-center gap-md justify-center md:justify-start">
+<div class="flex flex-col items-center p-md bg-white/10 backdrop-blur-md rounded-xl border-b-4 border-primary-fixed">
+<span class="text-headline-md font-headline-md text-white">48h</span>
+<span class="text-label-bold font-label-bold text-primary-fixed">RESTANTES</span>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center relative">
+<div class="absolute -inset-4 bg-primary-fixed/20 blur-3xl rounded-full"></div>
+<img alt="Camisa do Brasil" class="w-full max-w-md drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-500" data-alt="High-quality close up of the official Brazilian soccer jersey in vibrant yellow with green details against a premium dark background" src="https://lh3.googleusercontent.com/aida/ADBb0uiPCdCav5ZzNzlTtdcEfaB7O3CuOj5kxjMpMiJRQozCtBheqmYnZ0q_wvlG_wScPCk_vpiHmIESL7LRJrW7PKul7leq95GhQdG8hWe3oPrLFLQXYuvRsQsKVo5x8Jgc2G666y4RHAr_2OhbVV8U-kaVLPd98W6qjft6X4tb0kUzXILmj0rfd_qrCwEqh_0UPHc-loNT3IES-09LhTiUyrYBuWmYd6yeHFpB1_UNJpetNcNkKE01FbtRmXu2iuo2b5tPqMvPHok-ww"/>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<section class="max-w-2xl mx-auto px-gutter -mt-8 relative z-20">
+<div class="bg-white rounded-xl shadow-[8px_8px_0px_0px_rgba(0,110,39,1)] border-2 border-blue-900 p-lg">
+<div class="mb-lg text-center">
+<span class="material-symbols-outlined text-4xl text-secondary mb-xs" data-icon="stadium">stadium</span>
+<h3 class="font-headline-md text-headline-md text-blue-900 uppercase">Faça sua Inscrição</h3>
+<p class="font-body-md text-outline">Preencha os dados abaixo para validar seu ingresso.</p>
+</div>
+<form class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-blue-900 uppercase">Nome Completo</label>
+<input class="w-full px-md py-sm border-2 border-blue-900 focus:ring-0 focus:border-secondary focus:shadow-[0_0_10px_rgba(255,223,0,0.5)] bg-surface-container-lowest font-body-md outline-none transition-all" placeholder="Ex: Maria Silva" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-blue-900 uppercase">Seu Curso</label>
+<div class="relative">
+<select class="w-full px-md py-sm border-2 border-blue-900 focus:ring-0 focus:border-secondary bg-surface-container-lowest font-body-md outline-none appearance-none cursor-pointer">
+<option disabled="" selected="" value="">Selecione seu curso</option>
+<option>Design</option>
+<option>Engenharia</option>
+<option>Medicina</option>
+<option>Direito</option>
+<option>Pedagogia</option>
+<option>Música</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-900" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-blue-900 uppercase">Matrícula (RA)</label>
+<input class="w-full px-md py-sm border-2 border-blue-900 focus:ring-0 focus:border-secondary bg-surface-container-lowest font-body-md outline-none transition-all" placeholder="00-00000" type="text"/>
+</div>
+<div class="pt-md">
+<button class="w-full bg-primary-container text-blue-900 font-cta-label text-cta-label py-lg px-md uppercase italic border-2 border-blue-900 shadow-[4px_4px_0px_0px_rgba(0,110,39,1)] active:translate-y-0.5 active:translate-x-0.5 active:shadow-none transition-all flex items-center justify-center gap-sm" type="submit">
+                            QUERO GANHAR AGORA!
+                            <span class="material-symbols-outlined font-black" data-icon="bolt">bolt</span>
+</button>
+</div>
+<p class="text-center text-[12px] font-label-bold text-outline uppercase mt-md">
+                        Ao clicar, você concorda com o regulamento do sorteio.
+                    </p>
+</form>
+</div>
+</section>
+<!-- Bento Features -->
+<section class="max-w-container-max mx-auto px-gutter py-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-tertiary-container p-lg border-2 border-tertiary rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-9xl" data-icon="verified">verified</span>
+</div>
+<h4 class="font-headline-md text-2xl text-on-tertiary-container mb-xs uppercase">Original</h4>
+<p class="font-body-md text-on-tertiary-container/80">Produto oficial licenciado com selo de autenticidade.</p>
+</div>
+<div class="bg-secondary-container p-lg border-2 border-secondary rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-9xl" data-icon="local_shipping">local_shipping</span>
+</div>
+<h4 class="font-headline-md text-2xl text-on-secondary-container mb-xs uppercase">Entrega Grátis</h4>
+<p class="font-body-md text-on-secondary-container/80">Entregamos diretamente no seu campus da UEMG.</p>
+</div>
+<div class="bg-primary-fixed p-lg border-2 border-primary rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-9xl" data-icon="diversity_3">diversity_3</span>
+</div>
+<h4 class="font-headline-md text-2xl text-on-primary-fixed mb-xs uppercase">Comunidade</h4>
+<p class="font-body-md text-on-primary-fixed/80">Fortaleça a união entre os estudantes da nossa universidade.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-white dark:bg-zinc-900 rounded-t-lg border-t-2 border-blue-900 shadow-[0px_-4px_0px_0px_rgba(255,223,0,1)]">
+<a class="flex flex-col items-center justify-center bg-yellow-400 text-blue-900 rounded-md p-1 border-b-4 border-green-700 active:scale-95 duration-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-['Lexend'] font-extrabold uppercase text-[10px]">GIVEAWAY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 p-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:scale-95 duration-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Lexend'] font-extrabold uppercase text-[10px]">RANKING</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 p-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:scale-95 duration-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Lexend'] font-extrabold uppercase text-[10px]">PROFILE</span>
+</a>
+</nav>
+</body></html>

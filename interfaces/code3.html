@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe1ff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002107",
+                        "primary-fixed": "#ffe243",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-fixed": "#81fc90",
+                        "on-primary-fixed": "#211b00",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed-dim": "#e3c600",
+                        "secondary-container": "#7ff98d",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4c4732",
+                        "on-tertiary-container": "#445ead",
+                        "on-background": "#1c1b1b",
+                        "primary": "#6d5e00",
+                        "on-surface": "#1c1b1b",
+                        "secondary-fixed-dim": "#65df76",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0edec",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#6d5e00",
+                        "primary-container": "#ffdf00",
+                        "on-secondary-container": "#007329",
+                        "surface": "#fcf9f8",
+                        "tertiary": "#405aa9",
+                        "on-primary-fixed-variant": "#524700",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#00531c",
+                        "surface-container-high": "#ebe7e7",
+                        "background": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary": "#006e27",
+                        "on-primary-container": "#716200",
+                        "outline-variant": "#cec6ab",
+                        "on-tertiary-fixed": "#00174d",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#d7deff",
+                        "inverse-primary": "#e3c600",
+                        "inverse-surface": "#313030",
+                        "tertiary-fixed-dim": "#b5c4ff",
+                        "on-tertiary-fixed-variant": "#25428f",
+                        "outline": "#7d775f",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "gutter": "20px",
+                        "md": "24px",
+                        "base": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Lexend"],
+                        "cta-label": ["Lexend"],
+                        "body-lg": ["Lexend"],
+                        "label-bold": ["Space Grotesk"],
+                        "display-xl": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "body-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "cta-label": ["20px", {"lineHeight": "1.0", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "display-xl": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .skew-bg {
+            transform: skewY(-3deg);
+        }
+        .skew-content {
+            transform: skewY(3deg);
+        }
+        .mesh-pattern {
+            background-image: radial-gradient(#6d5e00 0.5px, transparent 0.5px);
+            background-size: 8px 8px;
+            opacity: 0.1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-yellow-400 dark:bg-yellow-500 text-blue-900 dark:text-blue-950 docked full-width border-b-4 border-green-700 shadow-[0px_4px_0px_0px_rgba(0,103,56,1)]">
+<div class="flex items-center gap-3">
+<img alt="UEMG Logo" class="h-10 w-10 object-contain rounded-full border-2 border-blue-900" data-alt="Official university logo of UEMG with clean graphic lines and academic symbols in blue and gold" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPDtsGIUiQwfKAcyoa5MTFxeACT2HZGXrVH2LKmOiIxl0HZ4qBuGCCO-X6d9yLY5nzcqCuC0BGs3W-eEZgE7V4smYKEUj4hIe9w6RyBgzrU6dWqJ4RXx4ZOAg0tetrh3bSqsUejcIb40jCV-0eObmBbEkFdz-Vawdyw3mNZMy1WRHtp4T34CuB31evSB53P2qnB2zjVuXZJu2L9F8MjXPVb5JLm6ly5dHUqvMO8p-UMQN5WFu4Ax_vLpF6T5YoXmr609VuLbY7DJQ"/>
+<h1 class="font-['Lexend'] font-black italic uppercase tracking-tighter text-xl text-blue-900 dark:text-blue-950">UEMG GIVEAWAY</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-2xl" data-icon="military_tech">military_tech</span>
+</div>
+</header>
+<main class="pt-24 pb-12 min-h-screen flex flex-col items-center">
+<!-- Hero Section -->
+<section class="relative w-full max-w-container-max mx-auto px-gutter mb-lg">
+<div class="relative overflow-visible bg-secondary p-base rounded-xl shadow-[8px_8px_0px_0px_rgba(0,33,7,1)]">
+<div class="absolute inset-0 mesh-pattern"></div>
+<div class="relative flex flex-col md:flex-row items-center gap-lg py-lg px-md z-10">
+<div class="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
+<div class="inline-block bg-primary-container text-on-primary-container font-label-bold text-label-bold px-sm py-xs mb-md border-b-4 border-green-900">
+                            CONFIRMADO!
+                        </div>
+<h2 class="font-display-xl text-headline-lg md:text-display-xl text-white italic uppercase mb-sm leading-none drop-shadow-md">
+                            VOCÊ ESTÁ NA DISPUTA!
+                        </h2>
+<p class="font-headline-md text-primary-fixed text-headline-md italic mb-md">
+                            Agora é só torcer! O manto sagrado pode ser seu.
+                        </p>
+</div>
+<div class="w-full md:w-1/2 relative order-1 md:order-2 flex justify-center">
+<!-- Floating Jersey Graphic -->
+<div class="relative w-72 h-72 md:w-96 md:h-96">
+<div class="absolute inset-0 bg-primary-fixed rounded-full blur-[100px] opacity-40 animate-pulse scale-110"></div>
+<img class="relative z-10 w-full h-full object-contain drop-shadow-[0px_20px_30px_rgba(0,0,0,0.3)]" data-alt="Official Brazil national team yellow jersey" src="https://lh3.googleusercontent.com/aida/ADBb0ugLEvbgS4LzwQiPpY4ttXtCr044VU7zTjXOmI09pg-UWfHxICNSotO_42CsTZxuEV2s54EXIfpl-sxU5fqYEEXBojA9lER_FUfU92J4sHbbu88Jx3mrF3k6XQoLf-o5yTI20lY0gFOZjaOFzomyAb2rnphM7WbhuzwEE2lnrZ7W4zyD6VeyWqh56OQas0L0Uxds_1q2XN0T5HD0hkc1rPUfo2yOIgf9Abv2koeJAAvtNzKNe0gGE12jxXphLFnKQteHZEkNJpHE-Q"/>
+<!-- Enhanced Festive Elements -->
+<span class="material-symbols-outlined absolute -top-4 -left-4 text-yellow-400 text-5xl animate-bounce" data-icon="celebration">celebration</span>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white text-4xl animate-pulse" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="material-symbols-outlined absolute top-1/4 -right-8 text-yellow-200 text-3xl animate-spin" data-icon="auto_awesome" style="animation-duration: 3s;">auto_awesome</span>
+<span class="material-symbols-outlined absolute -top-8 right-1/4 text-white text-2xl animate-ping" data-icon="flare">flare</span>
+<span class="material-symbols-outlined absolute bottom-1/4 -left-8 text-yellow-400 text-3xl animate-pulse" data-icon="workspace_premium">workspace_premium</span>
+<span class="material-symbols-outlined absolute top-0 right-0 text-yellow-300 text-4xl opacity-50" data-icon="confetti">confetti</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Message Body -->
+<section class="w-full max-w-4xl mx-auto px-gutter text-center space-y-md">
+<div class="bg-white border-4 border-blue-900 p-lg shadow-[12px_12px_0px_0px_rgba(255,226,67,1)]">
+<p class="font-body-lg text-body-lg text-on-surface mb-md">
+                    Parabéns por se cadastrar. Sua participação foi confirmada com sucesso. Fique de olho no seu e-mail para o grande anúncio!
+                </p>
+<!-- Match Timeline Stepper Mock -->
+<div class="flex items-center justify-center gap-base py-sm mb-lg">
+<div class="h-3 w-3 rounded-full bg-secondary"></div>
+<div class="h-1 w-12 bg-secondary"></div>
+<div class="h-3 w-3 rounded-full bg-secondary"></div>
+<div class="h-1 w-12 bg-secondary"></div>
+<div class="h-6 w-6 rounded-full bg-yellow-400 border-2 border-blue-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-blue-900 font-bold" data-icon="check">check</span>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="group relative inline-flex items-center justify-center bg-primary-container text-blue-900 font-cta-label text-cta-label py-md px-xl italic uppercase transition-all active:translate-x-1 active:translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,110,39,1)] hover:bg-yellow-300">
+                    VOLTAR AO INÍCIO
+                    <span class="material-symbols-outlined ml-sm" data-icon="home">home</span>
+</button>
+</div>
+</section>
+<!-- Secondary Info Cards (Bento Style) -->
+<section class="w-full max-w-container-max mx-auto px-gutter mt-xl grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-high border-2 border-blue-900 p-md flex flex-col gap-sm">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="mail">mail</span>
+<h4 class="font-headline-md text-headline-md uppercase italic text-blue-900">Verifique seu Inbox</h4>
+<p class="font-body-md text-body-md">Enviamos os detalhes do seu número da sorte para o e-mail cadastrado.</p>
+</div>
+<div class="bg-secondary text-white p-md flex flex-col gap-sm relative overflow-hidden">
+<div class="absolute inset-0 mesh-pattern opacity-20"></div>
+<span class="material-symbols-outlined text-primary-fixed text-4xl" data-icon="share">share</span>
+<h4 class="font-headline-md text-headline-md uppercase italic">Convide Amigos</h4>
+<p class="font-body-md text-body-md">Compartilhe e ganhe chances extras para cada amigo que se inscrever!</p>
+</div>
+<div class="bg-primary-container border-2 border-blue-900 p-md flex flex-col gap-sm">
+<span class="material-symbols-outlined text-blue-900 text-4xl" data-icon="calendar_month">calendar_month</span>
+<h4 class="font-headline-md text-headline-md uppercase italic text-blue-900">Grande Sorteio</h4>
+<p class="font-body-md text-body-md">O anúncio do vencedor será realizado ao vivo em nossas redes sociais em 15 dias.</p>
+</div>
+</section>
+</main>
+<!-- Footer Decoration -->
+<footer class="mt-xl py-lg bg-blue-900 text-white text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-2 bg-yellow-400"></div>
+<div class="relative z-10">
+<p class="font-label-bold text-label-bold opacity-70 mb-xs">UEMG - UNIVERSIDADE DO ESTADO DE MINAS GERAIS</p>
+<p class="font-label-bold text-label-bold tracking-widest">© 2024 TODOS OS DIREITOS RESERVADOS</p>
+</div>
+</footer>
+<!-- No BottomNavBar for Confirmation Screen per UX rules -->
+</body></html>
